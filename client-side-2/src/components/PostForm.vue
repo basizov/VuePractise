@@ -1,6 +1,7 @@
 <template>
   <form class="post__form">
     <my-input
+      v-focus
       v-model="newPost.title"
       placeholder="Title:"
     />

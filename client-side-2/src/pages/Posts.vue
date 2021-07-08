@@ -26,7 +26,7 @@
       v-if="sortedAndSearchedPosts.length > 0"
     />
     <h3 class="app__error" v-else>No posts yet :(</h3>
-    <div ref="observer" class="observer"></div>
+    <div v-intersection="loadMorePosts" class="observer"></div>
   </div>
 </template>
 
@@ -57,18 +57,6 @@ export default defineComponent({
   }),
   mounted() {
     this.fetchPosts();
-    const options = {
-      rootMargin: '0px',
-      threshold: 1.0
-    }
-    const callback = (entries: IntersectionObserverEntry[]) => {
-      if (entries[0].isIntersecting) {
-        this.loadMorePosts();
-      }
-    };
-    const observer = new IntersectionObserver(callback, options);
-
-    observer.observe(this.$refs.observer as Element);
   },
   methods: {
     createPost(newPost: IPost) {

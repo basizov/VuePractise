@@ -8,20 +8,11 @@
 
 <script lang='ts'>
   import { defineComponent } from "vue";
+  import toggleMixin from '@/mixins/toggleMixin';
 
   export default defineComponent({
     name: 'my-modal',
-    props: {
-      show: {
-        type: Boolean,
-        default: false
-      }
-    },
-    methods: {
-      hideModal() {
-        this.$emit('update:show', false);
-      }
-    }
+    mixins: [toggleMixin]
   });
 </script>
 
