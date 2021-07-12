@@ -3,6 +3,7 @@
     <div class="nav__link" @click="$router.push('/')">Logo</div>
     <router-link class="nav__link" to="/">Home</router-link>
     <router-link class="nav__link" to="/posts">Posts</router-link>
+    <router-link class="nav__link" to="/store">PostsStore</router-link>
   </nav>
   <main class="main">
     <router-view />
