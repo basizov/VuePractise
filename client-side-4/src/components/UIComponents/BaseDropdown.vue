@@ -1,5 +1,5 @@
 <template>
-  <section class="dropdown">
+  <section class="dropdown" @click.stop>
     <div
       class="dropdown__header"
       @click="toggleDropDown"
@@ -21,7 +21,7 @@
 </template>
 
 <script lang='ts'>
-  import { computed, defineComponent, PropType, ref } from "vue";
+  import { computed, defineComponent, PropType, ref, onMounted, onUnmounted } from "vue";
   import { IFilter } from '@/models/filter';
 
   export default defineComponent({
@@ -35,6 +35,10 @@
     setup({ items }, { emit }) {
       const showDropdown = ref(false);
       const toggleDropDown = () => showDropdown.value = !showDropdown.value;
+      const hideDropDown = () => {
+        console.log('Here');
+        showDropdown.value = false;
+      }
       const selectedItem = ref('Choose');
       const chooseItem = (item: IFilter) => {
         selectedItem.value = item.name;
@@ -46,6 +50,9 @@
         value: ''
       }, ...items];
       const itemsWithoutChoosen = computed(() => propsItems.filter(i => i.name !== selectedItem.value));
+
+      onMounted(() => document.addEventListener('click', hideDropDown));
+      onUnmounted(() => document.removeEventListener('click', hideDropDown));
 
       return {
         showDropdown,

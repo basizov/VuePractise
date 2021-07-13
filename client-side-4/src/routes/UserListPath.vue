@@ -42,7 +42,7 @@
         if (dropdownSelected.value !== '') {
           return user[dropdownSelected.value].toLowerCase().includes(searchQuery.value.toLowerCase())
         }
-        return users;
+        return user.name.toLowerCase().includes(searchQuery.value.toLowerCase());
       }));
       const items: IFilter[] = [
         { name: 'Name', value: 'name' },
