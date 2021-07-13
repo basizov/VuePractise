@@ -35,6 +35,7 @@
     outline: none;
     padding: 1rem;
     background-color: transparent;
+    box-shadow: 0 0 .5em rgba(0, 0, 0, .3);
     border-radius: .3rem;
     min-width: 7.5rem;
     border: .1rem solid hsl(214, 90%, 36%);
