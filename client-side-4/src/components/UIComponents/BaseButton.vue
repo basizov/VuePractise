@@ -21,6 +21,7 @@
 
 <style lang='scss' scoped>
   .btn {
+    outline: none;
     cursor: pointer;
     padding: 1rem;
     font-weight: 700;
@@ -49,6 +50,9 @@
       &:hover {
         background-color: hsl(2, 85%, 28%);
       }
+    }
+    &:focus {
+      border-color: hsl(39, 87%, 50%);
     }
   }
 </style>

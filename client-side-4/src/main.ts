@@ -3,6 +3,7 @@ import Components from '@/components';
 import Directives from '@/directives';
 import App from '@/App.vue'
 import router from '@/router';
+import store from './store';
 
 const vueApplication = createApp(App);
 
@@ -15,5 +16,6 @@ Directives.forEach((directive) => {
 });
 
 vueApplication
+  .use(store)
   .use(router)
   .mount('#app');

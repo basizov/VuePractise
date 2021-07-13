@@ -26,6 +26,7 @@
       justify-content: start;
     }
     &__link {
+      outline: none;
       text-transform: uppercase;
       position: relative;
       padding: 1rem;

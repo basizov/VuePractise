@@ -12,6 +12,9 @@
 <script lang='ts'>
   import { defineComponent, PropType } from "vue";
   import { IUser } from '@/models/user';
+  import { useStore } from "@/hooks/useStore";
+import { StateTypeAlias } from "@/store/modules/userModule/state";
+import { MutationTypes } from "@/store/modules/userModule/mutations";
 
   export default defineComponent({
     name: 'UserList',
@@ -22,8 +25,10 @@
       }
     },
     setup() {
+      const store = useStore();
       const userDetailes = (user: IUser) => {
         console.log(user);
+        store.commit(MutationTypes.SET_USER, user);
       };
 
       return {
