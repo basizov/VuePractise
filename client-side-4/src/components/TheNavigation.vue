@@ -2,12 +2,8 @@
   <nav class="nav">
     <div class="container">
       <div class="nav__wrapper">
-        <div class="nav__link">
-          <router-link to="/">Home</router-link>
-        </div>
-        <div class="nav__link">
-          <router-link to="/users">Users</router-link>
-        </div>
+        <router-link class="nav__link" to="/">Home</router-link>
+        <router-link class="nav__link" to="/users">Users</router-link>
       </div>
     </div>
   </nav>
@@ -33,11 +29,9 @@
       text-transform: uppercase;
       position: relative;
       padding: 1rem;
-      & > * {
-        font-family: inherit;
-        color: inherit;
-        text-decoration: none;
-      }
+      font-family: inherit;
+      color: inherit;
+      text-decoration: none;
       font-size: 1.8rem;
       font-weight: 700;
       &:hover {

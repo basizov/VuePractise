@@ -8,6 +8,10 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/users',
     component: () => import('@/routes/UserListPath.vue')
+  },
+  {
+    path: '/users/:id',
+    component: () => import('@/routes/UserDetailsPath.vue')
   }
 ];
 
