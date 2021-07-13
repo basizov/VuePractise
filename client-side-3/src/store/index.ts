@@ -17,7 +17,7 @@ type StoreModules = {
 };
 
 export type Store =
-  CounterStoreTypeAlias<Pick<StoreModules, Modules.COUNTER_MODULE>> &
-  RootStoreTypeAlias<Pick<StoreModules, Modules.ROOT>>;
+  CounterStoreTypeAlias<Pick<StoreModules, Modules.COUNTER_MODULE>>
+  & RootStoreTypeAlias<Pick<StoreModules, Modules.ROOT>>;
 
 export default  store;
