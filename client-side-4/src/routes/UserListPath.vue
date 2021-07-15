@@ -18,25 +18,31 @@
 </template>
 
 <script lang='ts'>
-  import { computed, defineComponent, PropType, ref } from "vue";
+  import { computed, defineComponent, onMounted, PropType, ref } from "vue";
   import { IUser } from '@/models/user';
   import { FilterTypeAlias, IFilter } from "@/models/filter";
+  import { useStore } from "@/hooks/useStore";
+import { ActionTypes } from "@/store/modules/userModule/actions";
+import { StateTypeAlias } from "@/store/modules/userModule/state";
 
   export default defineComponent({
     name: 'UsersPath',
     setup() {
+      const store = useStore();
       const dropdownSelected = ref<FilterTypeAlias>('');
       const searchQuery = ref<string>('');
-      const users: IUser[] = [
-        { id: '1', name: 'Boris', phone: '89196916135', email: 'boris.sizov.2001@mail.ru', username: 'barkasOff' },
-        { id: '2', name: 'Vladimir', phone: '89196916135', email: 'boris.sizov.2001@mail.ru', username: 'wronnel' },
-        { id: '3', name: 'Adel', phone: '89196916135', email: 'boris.sizov.2001@mail.ru', username: 'cobara' }
-      ];
+      // const users: IUser[] = [
+      //   { id: '1', name: 'Boris', phone: '89196916135', email: 'boris.sizov.2001@mail.ru', username: 'barkasOff' },
+      //   { id: '2', name: 'Vladimir', phone: '89196916135', email: 'boris.sizov.2001@mail.ru', username: 'wronnel' },
+      //   { id: '3', name: 'Adel', phone: '89196916135', email: 'boris.sizov.2001@mail.ru', username: 'cobara' }
+      // ];
+      const users = computed(() => ((store.state.userModule as unknown) as StateTypeAlias).users);
+      onMounted(() => store.dispatch(ActionTypes.GET_USERS));
       const sortedUsers = computed(() => {
         if (dropdownSelected.value !== '') {
-          return [...users].sort((f, s) => f[dropdownSelected.value].localeCompare(s[dropdownSelected.value]));
+          return [...users.value].sort((f, s) => f[dropdownSelected.value].localeCompare(s[dropdownSelected.value]));
         }
-        return users;
+        return users.value;
       });
       const sortedAndSearchedPosts = computed(() => sortedUsers.value.filter(user => {
         if (dropdownSelected.value !== '') {

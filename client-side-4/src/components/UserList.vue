@@ -42,8 +42,8 @@ import { MutationTypes } from "@/store/modules/userModule/mutations";
   .users {
     margin-top: 1.5rem;
     width: 100%;
-    display: flex;
-    align-items: center;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
     gap: .7rem;
   }
 </style>

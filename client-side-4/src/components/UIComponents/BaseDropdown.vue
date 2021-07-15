@@ -36,7 +36,6 @@
       const showDropdown = ref(false);
       const toggleDropDown = () => showDropdown.value = !showDropdown.value;
       const hideDropDown = () => {
-        console.log('Here');
         showDropdown.value = false;
       }
       const selectedItem = ref('Choose');

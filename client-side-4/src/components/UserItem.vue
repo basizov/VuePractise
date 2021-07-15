@@ -3,6 +3,7 @@
     <div class="user__name">{{ user.name }}</div>
     <div class="user__phone">{{ user.phone }}</div>
     <base-button
+      class="user__btn"
       @click="userDetails"
     >Details</base-button>
   </div>
@@ -40,10 +41,9 @@
 <style lang='scss' scoped>
   .user {
     padding: 1rem;
-    min-width: 15rem;
-    width: max-content;
-    display: flex;
-    flex-direction: column;
+    // width: max-content;
+    width: 100%;
+    display: grid;
     gap: .3rem;
     background-color: hsl(199, 53%, 79%);
     border: .1rem solid hsl(214, 90%, 36%);
@@ -56,6 +56,9 @@
     }
     &__phone {
       color: hsl(209, 100%, 63%);
+    }
+    &__btn {
+      align-self: end;
     }
   }
 </style>
