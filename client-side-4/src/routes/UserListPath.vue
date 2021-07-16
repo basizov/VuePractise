@@ -19,11 +19,9 @@
 
 <script lang='ts'>
   import { computed, defineComponent, onMounted, PropType, ref } from "vue";
-  import { IUser } from '@/models/user';
   import { FilterTypeAlias, IFilter } from "@/models/filter";
-  import { useStore } from "@/hooks/useStore";
-import { ActionTypes } from "@/store/modules/userModule/actions";
-import { StateTypeAlias } from "@/store/modules/userModule/state";
+  import useStore from "@/hooks/useStore";
+  import { StateTypeAlias } from "@/store/modules/userModule/state";
 
   export default defineComponent({
     name: 'UsersPath',
@@ -37,7 +35,6 @@ import { StateTypeAlias } from "@/store/modules/userModule/state";
       //   { id: '3', name: 'Adel', phone: '89196916135', email: 'boris.sizov.2001@mail.ru', username: 'cobara' }
       // ];
       const users = computed(() => ((store.state.userModule as unknown) as StateTypeAlias).users);
-      onMounted(() => store.dispatch(ActionTypes.GET_USERS));
       const sortedUsers = computed(() => {
         if (dropdownSelected.value !== '') {
           return [...users.value].sort((f, s) => f[dropdownSelected.value].localeCompare(s[dropdownSelected.value]));

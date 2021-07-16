@@ -14,9 +14,9 @@
 </template>
 
 <script lang='ts'>
-  import { useStore } from "@/hooks/useStore";
-import { StateTypeAlias } from "@/store/modules/userModule/state";
-import { computed, defineComponent } from "vue";
+  import useStore from "@/hooks/useStore";
+  import { StateTypeAlias } from "@/store/modules/userModule/state";
+  import { computed, defineComponent } from "vue";
 
   export default defineComponent({
     name: 'UserDetailsPath',

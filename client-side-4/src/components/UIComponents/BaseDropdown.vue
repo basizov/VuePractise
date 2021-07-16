@@ -91,6 +91,7 @@
       border-radius: .3rem;
       box-shadow: 0 0 .5em rgba(0, 0, 0, .3);
       width: 100%;
+      overflow: hidden;
       transition: opacity .25s linear, top .25s linear, z-index .25s linear;
       &-active {
         opacity: 1;
@@ -100,6 +101,7 @@
     }
     &__item {
       padding: 1rem;
+      background-color: hsl(0, 0%, 100%);
       transition: background-color .25s linear;
       &:hover {
         background-color: hsl(214, 90%, 36%);

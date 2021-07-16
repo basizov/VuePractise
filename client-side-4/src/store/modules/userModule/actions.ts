@@ -5,18 +5,20 @@ import { MutationsTypeAlias, MutationTypes } from "./mutations";
 import { StateTypeAlias } from "./state";
 
 export enum ActionTypes {
-  GET_USERS = 'getUsers'
+  GET_USERS = 'getUsers',
+  ADD_USER = 'addUser'
 };
 
 type  AugmentedActionContext = {
   commit<K extends keyof MutationsTypeAlias>(
     key: K,
-    users: IUser[]
+    users?: IUser[]
   ): ReturnType<MutationsTypeAlias[K]>
 } & Omit<ActionContext<StateTypeAlias, StateTypeAlias>, "commit">;
 
 export interface  IActions {
   [ActionTypes.GET_USERS]: ({ commit }: AugmentedActionContext) => void;
+  [ActionTypes.ADD_USER]: ({ state }: ActionContext<StateTypeAlias, StateTypeAlias>, user: IUser) => void;
 };
 
 const actions: ActionTree<StateTypeAlias, StateTypeAlias> & IActions = {
@@ -28,6 +30,9 @@ const actions: ActionTree<StateTypeAlias, StateTypeAlias> & IActions = {
     } catch (e) {
       console.error(e)
     };
+  },
+  [ActionTypes.ADD_USER]: ({ state }: ActionContext<StateTypeAlias, StateTypeAlias>, user: IUser) => {
+    state.users.push(user);
   }
 }
 

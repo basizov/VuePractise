@@ -2,28 +2,53 @@
   <nav class="nav">
     <div class="container">
       <div class="nav__wrapper">
-        <router-link class="nav__link" to="/">Home</router-link>
-        <router-link class="nav__link" to="/users">Users</router-link>
+        <div class="nav__start">
+          <router-link class="nav__link" to="/">Home</router-link>
+          <router-link class="nav__link" to="/users">Users</router-link>
+        </div>
+        <div class="nav_end">
+          <base-button @click='setShowModal'>Add user</base-button>
+          <teleport to='body'>
+            <modal v-model:show='showModal'>
+              <add-user-form />
+            </modal>
+          </teleport>
+        </div>
       </div>
     </div>
   </nav>
 </template>
 
 <script>
-  import { defineComponent } from "@vue/runtime-core";
+  import { defineComponent, ref } from "@vue/runtime-core";
 
   export default  defineComponent({
-    name: 'Navigation'
+    name: 'Navigation',
+    setup() {
+      const showModal = ref(false);
+      const setShowModal = () => showModal.value = true;
+
+      return {
+        showModal,
+        setShowModal
+      }
+    }
   });
 </script>
 
 <style lang='scss' scoped>
   .nav {
     background-color: hsl(217, 10%, 46%);
-    &__wrapper {
+    &__wrapper,
+    &__start,
+    &__end {
       display: flex;
       align-items: center;
       justify-content: start;
+    }
+    &__wrapper {
+      padding: 0 1rem;
+      justify-content: space-between;
     }
     &__link {
       outline: none;

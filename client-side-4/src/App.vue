@@ -5,6 +5,21 @@
   </main>
 </template>
 
+<script lang='ts'>
+  import { defineComponent, onMounted } from "vue";
+  import useStore from "./hooks/useStore";
+  import { ActionTypes } from "./store/modules/userModule/actions";
+
+  export default  defineComponent({
+    name: 'App',
+    setup() {
+      const store = useStore();
+      
+      onMounted(() => store.dispatch(ActionTypes.GET_USERS));
+    }
+  });
+</script>
+
 <style lang='scss'>
   *,
   *:before,

@@ -51,8 +51,5 @@
         background-color: hsl(2, 85%, 28%);
       }
     }
-    &:focus {
-      border-color: hsl(39, 87%, 50%);
-    }
   }
 </style>
